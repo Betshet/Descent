@@ -1,0 +1,51 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed0dc47874d48c849a8279f2311f8ae4, type: 3}
+  m_Name: Location1
+  m_EditorClassIdentifier: Assembly-CSharp::MapLocation
+  links:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 11400000, guid: de49da6a5dde43e4590764ecc6993e60, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  clockwiseTurns:
+  - {fileID: 32900000, guid: d0d608813e68e8b44afd3cd9046c8712, type: 3}
+  - {fileID: 0}
+  - {fileID: 32900000, guid: 8a0b12ebe8472094d8019c5f6b2efeb0, type: 3}
+  - {fileID: 0}
+  - {fileID: 32900000, guid: b3a03e08579bb924982e2b998599cc40, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  anticlockwiseTurns:
+  - {fileID: 32900000, guid: 6e5737ad18b4a334dba4fed309d43498, type: 3}
+  - {fileID: 0}
+  - {fileID: 32900000, guid: c2f1f4cce776c7044b8fd25b726a1de9, type: 3}
+  - {fileID: 0}
+  - {fileID: 32900000, guid: 085cd1cad05fae548b8fd6bd20cd0979, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  transitions:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 32900000, guid: e314a1b5a4e5803448fbecea63e6f4d4, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  lookableDirections: 0100010001000000
