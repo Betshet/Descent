@@ -1,0 +1,72 @@
+Compte-rendu créé : 
+	05/12/2025	11:05:52
+
+Nom de projet : Test_Metro.aep
+
+Fichiers source rassemblés dans : 
+	D:\Documents\Pro\Ecoles\gobelins\projet_metro\Test_Metro dossier
+
+Fichiers source rassemblés : Tout
+
+Comp. rassemblées : 
+	Test_Metro
+	Eau
+	Water
+	
+Nombre de fichiers rassemblés : 13
+
+Taille des fichiers rassemblés : 69,2 Mo
+
+Fichiers source rassemblés : 
+	D:\Documents\Pro\Ecoles\gobelins\projet_metro\test\videos\ascenceur2_vers_bout2.mp4
+	D:\Documents\Pro\Ecoles\gobelins\projet_metro\test\videos\ascenceur_vers_bout.mp4
+	D:\Documents\Pro\Ecoles\gobelins\projet_metro\test\videos\ascenceur_vers_sos.mp4
+	D:\Documents\Pro\Ecoles\gobelins\projet_metro\test\videos\bout2_vers_asceneur2.mp4
+	D:\Documents\Pro\Ecoles\gobelins\projet_metro\test\videos\bout_vers_ascenceur.mp4
+	D:\Documents\Pro\Ecoles\gobelins\projet_metro\test\videos\classe_vers_couloir.mp4
+	D:\Documents\Pro\Ecoles\gobelins\projet_metro\test\videos\sos_vers_ascenceur.mp4
+	D:\Documents\Pro\Ecoles\gobelins\projet_metro\test\videos\tour_ascenceur.mp4
+	D:\Documents\Pro\Ecoles\gobelins\projet_metro\test\videos\tour_ascenceur_2.mp4
+	D:\Documents\Pro\Ecoles\gobelins\projet_metro\test\videos\tour_bout.mp4
+	D:\Documents\Pro\Ecoles\gobelins\projet_metro\test\videos\tour_bout2.mp4
+	D:\Documents\Pro\Ecoles\gobelins\projet_metro\test\videos\tour_classe.mp4
+	D:\Documents\Pro\Ecoles\gobelins\projet_metro\test\videos\tour_sos.mp4
+	
+Rendu des modules externes :
+	3D  classique
+	
+Effets utilisés : 16
+
+Effet : Bruit fractal
+	
+Effet : CC Ball Action
+	
+Effet : Décalage des couches
+	
+Effet : Flou encadré accéléré
+	
+Effet : Flou gaussien
+	
+Effet : Flou objectif appareil photo
+	
+Effet : Gamme des dégradés
+	
+Effet : Inverser
+	
+Effet : Lueur diffuse
+	
+Effet : Paramètre glissière
+	
+Effet : Plus net
+	
+Effet : Remplir
+	
+Effet : Transformation
+	
+Effet : Trichrome
+	
+Effet : Turbulences
+	
+Effet : Volet linéaire
+	
+
