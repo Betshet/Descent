@@ -27,11 +27,13 @@ public class MapLocation : ScriptableObject
     public VideoClip[] clockwiseTurns = new VideoClip[8];
     public VideoClip[] anticlockwiseTurns = new VideoClip[8];
     public VideoClip[] transitions = new VideoClip[8];
+    public GameObject[] viewCanvases = new GameObject[8];
     public bool[] lookableDirections = new bool[8]{true, false, true, false, true, false, true, false};
     
     public MapLocation[] Links => links;
     public VideoClip[] ClockwiseTurns => clockwiseTurns;
     public VideoClip[] AnticlockwiseTurns => anticlockwiseTurns;
     public VideoClip[] Transitions => transitions;
+    public GameObject[] ViewCanvases => viewCanvases;
     public bool[] LookableDirections => lookableDirections;
 }

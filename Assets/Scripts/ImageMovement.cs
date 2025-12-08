@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Video;
@@ -24,7 +25,7 @@ public class ImageMovement : MonoBehaviour
     private Direction _currentDirection = Direction.N;
     private FMVState _currentState = FMVState.Idle;
     private VideoPlayer _currentVideoPlayer;
-    private bool _displayUsed = false;
+    private GameObject _currentCanvas;
     
     public RenderTexture persistentRT;
     
@@ -44,6 +45,7 @@ public class ImageMovement : MonoBehaviour
         videoDisplay0.sendFrameReadyEvents = false;
         videoDisplay0.skipOnDrop = false;
         
+        _currentCanvas = Instantiate(_currentLocation.ViewCanvases[(int)_currentDirection]);
     }
     
     void Update()
@@ -52,15 +54,18 @@ public class ImageMovement : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.UpArrow)) {
                 if (_currentLocation.links[(int)_currentDirection] != null) {
                     _currentState  = FMVState.Transitioning;
+                    Destroy(_currentCanvas);
                     TransitionLocation();
                 }
             }
             if (Input.GetKeyDown(KeyCode.RightArrow)) {
                 _currentState  = FMVState.Transitioning;
+                Destroy(_currentCanvas);
                 Turn(TurnDirection.Right);
             }
             if (Input.GetKeyDown(KeyCode.LeftArrow)) {
                 _currentState = FMVState.Transitioning;
+                Destroy(_currentCanvas);
                 Turn(TurnDirection.Left);
             }
         }
@@ -73,7 +78,11 @@ public class ImageMovement : MonoBehaviour
     
     private void OnTransitionVideoFinished(VideoPlayer source) {
         _currentLocation = _currentLocation.links[(int)_currentDirection];
+        _currentDirection = FindClosestDirection(_currentDirection, _currentLocation);
         _currentState  = FMVState.Idle;
+        if (_currentLocation.ViewCanvases[(int)_currentDirection]) {
+            _currentCanvas = Instantiate(_currentLocation.ViewCanvases[(int)_currentDirection]);
+        }
         _currentVideoPlayer.loopPointReached -= OnTransitionVideoFinished;
     }
 
@@ -98,6 +107,9 @@ public class ImageMovement : MonoBehaviour
     
     private void OnTurnVideoFinished(VideoPlayer source) {
         _currentState  = FMVState.Idle;
+        if (_currentLocation.ViewCanvases[(int)_currentDirection]) {
+            _currentCanvas = Instantiate(_currentLocation.ViewCanvases[(int)_currentDirection]);
+        }
         videoDisplay0.loopPointReached -= OnTurnVideoFinished;
     }
 
@@ -107,6 +119,29 @@ public class ImageMovement : MonoBehaviour
         _currentVideoPlayer.Prepare();   // PRELOAD NEW DECODED FRAME
         yield return new WaitUntil(() => _currentVideoPlayer.isPrepared);
         _currentVideoPlayer.Play();
+    }
+
+    private Direction FindClosestDirection(Direction direction, MapLocation location) {
+        Direction closestDirection = direction;
+        for (int i = 0; i < 5; i++) {
+            Direction rightDirection = direction + i;
+            if (rightDirection > Direction.NW) {
+                rightDirection = Direction.N;
+            }
+            if (location.LookableDirections[(int)rightDirection]) {
+                closestDirection = rightDirection;
+                break;
+            }
+            Direction leftDirection = direction - i;
+            if (leftDirection < Direction.N) {
+                leftDirection = Direction.NW;
+            }
+            if (location.LookableDirections[(int)leftDirection]) {
+                closestDirection = leftDirection;
+                break;
+            }
+        }
+        return closestDirection;
     }
 
     private Direction FindNextDirection(TurnDirection turn) {
