@@ -23,12 +23,12 @@ public enum DisplayType {
 [CreateAssetMenu(fileName = "Location", menuName = "ScriptableObjects/MapLocation", order = 1)]
 public class MapLocation : ScriptableObject
 {
-    private MapLocation[] links = new MapLocation[8];
-    private VideoClip[] clockwiseTurns = new VideoClip[8];
-    private VideoClip[] anticlockwiseTurns = new VideoClip[8];
-    private VideoClip[] transitions = new VideoClip[8];
-    private GameObject[] viewCanvases = new GameObject[8];
-    private bool[] lookableDirections = new bool[8]{true, false, true, false, true, false, true, false};
+    [SerializeField] private MapLocation[] links = new MapLocation[8];
+    [SerializeField] private VideoClip[] clockwiseTurns = new VideoClip[8];
+    [SerializeField] private VideoClip[] anticlockwiseTurns = new VideoClip[8];
+    [SerializeField] private VideoClip[] transitions = new VideoClip[8];
+    [SerializeField] private GameObject[] viewCanvases = new GameObject[8];
+    [SerializeField] private bool[] lookableDirections = new bool[8]{true, false, true, false, true, false, true, false};
     
     public MapLocation[] Links => links;
     public VideoClip[] ClockwiseTurns => clockwiseTurns;

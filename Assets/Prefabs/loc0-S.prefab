@@ -86,8 +86,7 @@ GameObject:
   - component: {fileID: 5855125156248429491}
   - component: {fileID: 5962709766587056911}
   - component: {fileID: 4402991709895496714}
-  - component: {fileID: 3505531385299307746}
-  - component: {fileID: 2455519358902944301}
+  - component: {fileID: 4881903113303489154}
   m_Layer: 5
   m_Name: Image
   m_TagString: Untagged
@@ -152,28 +151,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!65 &3505531385299307746
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4167195270939087964}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 30, y: 85, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &2455519358902944301
+--- !u!114 &4881903113303489154
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -182,10 +160,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 4167195270939087964}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 103494bcb3020584aa44e84d09eda30f, type: 3}
+  m_Script: {fileID: 11500000, guid: af4908e34e288ed4cbf2b9d40b66e72f, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlaceholderSilhouette
+  m_EditorClassIdentifier: Assembly-CSharp::Interactable
   highlight: {fileID: 1200822759562544185}
+  interactibleData: {fileID: 11400000, guid: 93609bacf95172b4daf3deeeb0fe14b5, type: 2}
+  buttonPrefab: {fileID: 954159071278765815, guid: 298328dcc32e0c741ba961ee61aea685, type: 3}
+  canvas: {fileID: 1086987904338019800}
 --- !u!1 &6131427525223795366
 GameObject:
   m_ObjectHideFlags: 0
@@ -280,7 +261,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_VertexColorAlwaysGammaSpace: 0
-  m_AdditionalShaderChannelsFlag: 0
+  m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
   m_SortingOrder: 1
