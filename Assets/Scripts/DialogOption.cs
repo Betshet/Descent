@@ -6,11 +6,11 @@ public enum Portrait
     Char1
 }
 
-[CreateAssetMenu(fileName = "DialogOption", menuName = "Scriptable Objects/DialogOption")]
+[CreateAssetMenu(fileName = "DialogOption", menuName = "ScriptableObjects/DialogOption")]
 public class DialogOption : ScriptableObject
 {
     public string action;
     public string dialogText;
-    public string[] dialogChoices;
+    public CharacterDialogOption[] dialogChoices;
     public Portrait portrait;
 }
