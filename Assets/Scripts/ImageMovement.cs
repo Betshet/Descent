@@ -52,7 +52,7 @@ public class ImageMovement : MonoBehaviour
     {
         if (_currentState == FMVState.Idle) {
             if (Input.GetKeyDown(KeyCode.UpArrow)) {
-                if (_currentLocation.links[(int)_currentDirection] != null) {
+                if (_currentLocation.Links[(int)_currentDirection] != null) {
                     _currentState  = FMVState.Transitioning;
                     Destroy(_currentCanvas);
                     TransitionLocation();
@@ -77,7 +77,7 @@ public class ImageMovement : MonoBehaviour
     }
     
     private void OnTransitionVideoFinished(VideoPlayer source) {
-        _currentLocation = _currentLocation.links[(int)_currentDirection];
+        _currentLocation = _currentLocation.Links[(int)_currentDirection];
         _currentDirection = FindClosestDirection(_currentDirection, _currentLocation);
         _currentState  = FMVState.Idle;
         if (_currentLocation.ViewCanvases[(int)_currentDirection]) {
