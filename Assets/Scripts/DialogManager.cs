@@ -26,6 +26,17 @@ public class DialogManager : MonoBehaviour
     [SerializeField]
     GameObject DialogBox_Choice;
 
+    [SerializeField]
+    GameObject[] ChoiceButtons;
+
+    [SerializeField]
+    GameObject[] ChoiceButtonsText;
+
+    DialogOption currentCharDialog;
+    CharacterDialogOption currentCharOption;
+    int currentDialogLine = 0;
+    bool inCharacterDialog = false;
+
     public static DialogManager Instance { get; private set; }
     private void Awake()
     {
@@ -78,16 +89,108 @@ public class DialogManager : MonoBehaviour
 
     public void SetDialogBoxText(string TextToDisplay, bool portrait = false)
     {
-        GameObject dboxtext;
+        HideDialogBox();
+        DisplayDialogBox(portrait ? DialogType.Portrait : DialogType.NoPortrait);
 
-        if (portrait) dboxtext = DialogBoxText_Portrait;
-        else dboxtext = DialogBoxText_NoPortrait;
+        GameObject dboxtext = portrait ? DialogBoxText_Portrait : DialogBoxText_NoPortrait;
 
         dboxtext.GetComponent<TextMeshProUGUI>().text = TextToDisplay;
     }
 
-    public void SetDialog(Dialog dialog)
+    public void SetDialog(DialogOption dialog)
     {
+        if(dialog.portrait == Portrait.None)
+        {
+            if(dialog.dialogChoices.Length != 0)
+            {
+                SetupChoice(dialog);
+            }
+            else
+            {
+                SetDialogBoxText(dialog.dialogText, false);
+            }
+        }
+        else
+        {
+            SetDialogBoxText(dialog.dialogText, true);
+        }
+    }
 
+    public void SetupChoice(DialogOption talkMenu)
+    {
+        currentCharDialog = talkMenu;
+
+        HideDialogBox();
+        DisplayDialogBox(DialogType.Choice);
+
+        foreach (var button in ChoiceButtons)
+        {
+            button.SetActive(false);
+        }
+
+        for(int i = 0 ; i < talkMenu.dialogChoices.Length ; i++)
+        {
+            ChoiceButtons[i].SetActive(true);
+            ChoiceButtonsText[i].GetComponent<TextMeshProUGUI>().text = talkMenu.dialogChoices[i].dialogOptionText;
+        }
+    }
+
+    public void OnClick_SelectChoice1()
+    {
+        currentCharOption = currentCharDialog.dialogChoices[1];
+        SetupNextLine();
+    }
+
+    public void OnClick_SelectChoice2()
+    {
+        currentCharOption = currentCharDialog.dialogChoices[2];
+        SetupNextLine();
+    }
+
+    public void OnClick_SelectChoice3()
+    {
+        currentCharOption = currentCharDialog.dialogChoices[3];
+        SetupNextLine();
+    }
+
+    public void OnClick_SelectChoice4()
+    {
+        currentCharOption = currentCharDialog.dialogChoices[4];
+        SetupNextLine();
+    }
+
+    void SetupNextLine()
+    {
+        inCharacterDialog = true;
+        HideDialogBox();
+        NextLine();
+    }
+
+    void NextLine()
+    {
+        if(currentDialogLine > currentCharOption.dialogText.Length)
+        {
+            inCharacterDialog = true;
+            HideDialogBox();
+        }
+        else
+        {
+            DisplayDialogBox(currentCharOption.dialogPortraits[currentDialogLine] == Portrait.None ? DialogType.NoPortrait : DialogType.Portrait);
+            SetDialogBoxText(currentCharOption.dialogText[currentDialogLine]);
+
+            currentDialogLine++;
+        }
+    }
+
+    public void OnClick_TextBox()
+    {
+        if (inCharacterDialog)
+        {
+            NextLine();
+        }
+        else
+        {
+            HideDialogBox();
+        }
     }
 }

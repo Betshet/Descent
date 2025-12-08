@@ -3,12 +3,13 @@ using UnityEngine;
 public enum InteractibleObject
 {
     None,
-    Chair
+    Chair,
+    Character_Comfort
 }
 
 
-[CreateAssetMenu(fileName = "Dialog", menuName = "ScriptableObjects/Dialog")]
-public class Dialog : ScriptableObject
+[CreateAssetMenu(fileName = "IteractibleData", menuName = "ScriptableObjects/IteractibleData")]
+public class IteractibleData : ScriptableObject
 {
     public InteractibleObject iobject;
     public DialogOption[] dialogOptions;
