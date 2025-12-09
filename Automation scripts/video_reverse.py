@@ -3,9 +3,11 @@ from moviepy import VideoFileClip
 import moviepy.video.fx as vfx
 from moviepy.video.VideoClip import ImageClip
 
-input_folder = "videos_processed/Location0/normal"
-output_folder = "videos_processed/Location0/reversed"
-frames_folder = "frames/Location0"
+scene = "Scene7"
+
+input_folder = "videos_processed/"+ scene +"/normal"
+output_folder = "videos_processed/"+ scene +"/reversed"
+frames_folder = "frames/"+ scene 
 
 os.makedirs(output_folder, exist_ok=True)
 os.makedirs(frames_folder, exist_ok=True)

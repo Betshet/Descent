@@ -1,8 +1,10 @@
 import os
 from moviepy import VideoFileClip
 
-input_folder = "videos_processed/Location0/reversed"
-output_folder = "videos_processed/Location0/final"
+scene = "Scene7"
+
+input_folder = "videos_processed/"+ scene +"/normal"
+output_folder = "videos_processed/"+ scene +"/final"
 
 TARGET_FPS = 24
 
@@ -11,7 +13,7 @@ os.makedirs(output_folder, exist_ok=True)
 for filename in os.listdir(input_folder):
     if filename.lower().endswith((".mp4", ".mov", ".avi", ".mkv")):
         input_path = os.path.join(input_folder, filename)
-        output_path = os.path.join(output_folder, f"processed_{filename}")
+        output_path = os.path.join(output_folder, f"reduced_{filename}")
 
         print(f"Processing: {filename}")
 

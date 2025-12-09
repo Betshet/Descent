@@ -462,7 +462,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 3
   m_TargetDisplay: 0
 --- !u!224 &199387839
 RectTransform:
@@ -1000,7 +1000,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ImageMovement
   imageDisplay: {fileID: 0}
   videoDisplay0: {fileID: 526948211}
-  startLocation: {fileID: 11400000, guid: de49da6a5dde43e4590764ecc6993e60, type: 2}
+  startLocation: {fileID: 11400000, guid: ee99c3b0f976af943a4e178b1acf8af4, type: 2}
   rawImage: {fileID: 1278514111}
   persistentRT: {fileID: 0}
 --- !u!1 &710444441

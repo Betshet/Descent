@@ -1,8 +1,10 @@
 import os
 from moviepy import VideoFileClip
 
-input_folder = "Videos/Location0"
-output_folder = "videos_processed/Location0/normal"
+scene = "Scene7"
+
+input_folder = "Videos/" + scene
+output_folder = "videos_processed/" + scene + "/normal"
 
 TARGET_WIDTH = 640
 TARGET_HEIGHT = 360
