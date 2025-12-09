@@ -25,11 +25,9 @@ public class Interactable : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
         if (Input.GetMouseButtonDown(0)) {
             if (_isHovered && _isInteractable && _buttons.Count == 0) {
                 OpenMenu();
-                _isInteractable = false;
             }
             else if (_buttons.Count > 0 && !_isHovered) {
                 CloseMenu();
-                _isInteractable = true;
             }
         }
     }
@@ -49,18 +47,23 @@ public class Interactable : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
     }
 
     private void OpenMenu() {
-
+        
         for (int i = 0; i < interactibleData.dialogOptions.Length; i++) {
 
+            // create button
             var button = Instantiate(buttonPrefab, transform);
             Button buttonScript = button.GetComponent<Button>();
             String text = interactibleData.dialogOptions[i].dialogText;
 
-            buttonScript.onClick.AddListener(() => UseButton(text, interactibleData.dialogOptions[i]));
+            // add button effect linked to dialog
+            DialogOption dialogOption = interactibleData.dialogOptions[i];
+            buttonScript.onClick.AddListener(() => UseButton(text, dialogOption));
 
+            // set button text
             TMP_Text textScript = button.GetComponentInChildren<TMP_Text>();
             textScript.text = interactibleData.dialogOptions[i].action;
 
+            // set button position à la rache pas ouf à refaire
             button.transform.Translate(transform.position);
             button.transform.Translate(new Vector3(0, i * 50f, 0));
             _buttons.Add(button);
@@ -69,8 +72,8 @@ public class Interactable : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
 
     private void UseButton(String text, DialogOption doption) {
         Debug.Log(text);
-        DialogManager.Instance.SetDialog(doption);
         CloseMenu();
+        DialogManager.Instance.SetDialog(doption);
     }
 
     private void CloseMenu() {
