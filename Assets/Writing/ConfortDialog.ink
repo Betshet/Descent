@@ -248,7 +248,7 @@ Personnage nu, ensanglanté, tremblant en position fétale au sol.
 
 =Heureux
 "Tu me fais chaud au coeur. J'en serais presque ému."
-- * "Ca vous plaît de me tourmenter ainsi?"
+- * "Ca vous plaît de me tourmenter ainsi ?"
 "Oulà, tu te méprends mon ami! Je n'y suis pour rien dans tout cela!"
 - * "Vraiment?"
 "Je le jure! Je ne suis pas certain de la raison pour laquelle cette expérience a été forcée sur toi. La cause m'échappe, et il se pourrait bien qu'il n'y en ait tout simplement aucune."

@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: DialogOptionTest2
   m_EditorClassIdentifier: Assembly-CSharp::DialogOption
   action: talk
-  dialogText: it's not a real person, nerd
-  dialogChoices: []
+  dialogText: 
+  dialogChoices:
+  - {fileID: 11400000, guid: 845720c7a65afd74fb7883c3d2bad41f, type: 2}
+  - {fileID: 11400000, guid: 2ae69084aa2efc64ebf162e252bb347d, type: 2}
   portrait: 0

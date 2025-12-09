@@ -94,7 +94,7 @@ public class DialogManager : MonoBehaviour
 
         GameObject dboxtext = portrait ? DialogBoxText_Portrait : DialogBoxText_NoPortrait;
 
-        dboxtext.GetComponent<TextMeshProUGUI>().text = TextToDisplay;
+        dboxtext.GetComponent<TextMeshProUGUI>().SetText(TextToDisplay);
     }
 
     public void SetDialog(DialogOption dialog)
@@ -137,30 +137,31 @@ public class DialogManager : MonoBehaviour
 
     public void OnClick_SelectChoice1()
     {
-        currentCharOption = currentCharDialog.dialogChoices[1];
+        currentCharOption = currentCharDialog.dialogChoices[0];
         SetupNextLine();
     }
 
     public void OnClick_SelectChoice2()
     {
-        currentCharOption = currentCharDialog.dialogChoices[2];
+        currentCharOption = currentCharDialog.dialogChoices[1];
         SetupNextLine();
     }
 
     public void OnClick_SelectChoice3()
     {
-        currentCharOption = currentCharDialog.dialogChoices[3];
+        currentCharOption = currentCharDialog.dialogChoices[2];
         SetupNextLine();
     }
 
     public void OnClick_SelectChoice4()
     {
-        currentCharOption = currentCharDialog.dialogChoices[4];
+        currentCharOption = currentCharDialog.dialogChoices[3];
         SetupNextLine();
     }
 
     void SetupNextLine()
     {
+        currentDialogLine = 0;
         inCharacterDialog = true;
         HideDialogBox();
         NextLine();
@@ -168,9 +169,9 @@ public class DialogManager : MonoBehaviour
 
     void NextLine()
     {
-        if(currentDialogLine > currentCharOption.dialogText.Length)
+        if(currentDialogLine >= currentCharOption.dialogText.Length)
         {
-            inCharacterDialog = true;
+            inCharacterDialog = false;
             HideDialogBox();
         }
         else

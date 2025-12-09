@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: DialogOptionTest0
   m_EditorClassIdentifier: Assembly-CSharp::DialogOption
   action: lick
-  dialogText: you licked, ew
+  dialogText: '-'
   dialogChoices: []
   portrait: 0
