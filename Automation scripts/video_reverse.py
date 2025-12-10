@@ -3,7 +3,7 @@ from moviepy import VideoFileClip
 import moviepy.video.fx as vfx
 from moviepy.video.VideoClip import ImageClip
 
-scene = "Scene7"
+scene = "Scene8"
 
 input_folder = "videos_processed/"+ scene +"/normal"
 output_folder = "videos_processed/"+ scene +"/reversed"
@@ -38,4 +38,4 @@ for filename in os.listdir(input_folder):
         clip.close()
         reversed_clip.close()
 
-print("Done!")
+print("Reverse Done!")

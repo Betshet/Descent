@@ -1,7 +1,7 @@
 import os
 from moviepy import VideoFileClip
 
-scene = "Scene7"
+scene = "Scene8"
 
 input_folder = "Videos/" + scene
 output_folder = "videos_processed/" + scene + "/normal"
