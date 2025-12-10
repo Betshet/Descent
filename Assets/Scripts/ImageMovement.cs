@@ -37,6 +37,8 @@ public class ImageMovement : MonoBehaviour
     [SerializeField] private MapLocation startLocation;
     [SerializeField] private RawImage rawImage;
     
+    [SerializeField] private MapLocation locationAfterHole;
+    
     private MapLocation _currentLocation;
     private Direction _currentDirection = Direction.N;
     private FMVState _currentState = FMVState.Idle;
@@ -201,7 +203,10 @@ public class ImageMovement : MonoBehaviour
     public void ApplyEffect(InteractableEffect effect) {
         switch (effect) {
             case InteractableEffect.HandInHole:
-                
+                _currentState  = FMVState.Transitioning;
+                Destroy(_currentCanvas);
+                StartCoroutine(PlayClip(_currentLocation.Transitions[(int)_currentDirection]));
+                _currentVideoPlayer.loopPointReached += OnHandInHoleFinish;
                 break;
             case InteractableEffect.QuaiPeople:
                 if (_currentLocation.LocationEffect == LocationEffect.Quai) {
@@ -213,6 +218,15 @@ public class ImageMovement : MonoBehaviour
                 }
                 break;
         }
+    }
+
+    private void OnHandInHoleFinish(VideoPlayer source) {
+        _currentLocation = locationAfterHole;
+        _currentState  = FMVState.Idle;
+        if (_currentLocation.ViewCanvases[(int)_currentDirection] != null) {
+            _currentCanvas = Instantiate(_currentLocation.ViewCanvases[(int)_currentDirection]);
+        }
+        _currentVideoPlayer.loopPointReached -= OnHandInHoleFinish;
     }
     
 }

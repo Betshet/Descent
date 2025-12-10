@@ -1144,8 +1144,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ImageMovement
   imageDisplay: {fileID: 0}
   videoDisplay0: {fileID: 526948211}
-  startLocation: {fileID: 11400000, guid: de49da6a5dde43e4590764ecc6993e60, type: 2}
+  startLocation: {fileID: 11400000, guid: 929a106dba54833489aed64bb70bb73a, type: 2}
   rawImage: {fileID: 1278514111}
+  locationAfterHole: {fileID: 11400000, guid: fa10cde4d2f7f1d43aeea51b0bd2d937, type: 2}
   persistentRT: {fileID: 0}
 --- !u!1 &710444441
 GameObject:
