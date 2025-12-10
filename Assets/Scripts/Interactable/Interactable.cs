@@ -44,10 +44,13 @@ public class Interactable : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
                 switch (interactableType) {
                     case InteractableType.Dialog: 
                         if (_isHovered && _buttons.Count == 0) {
+                            SoundManager.Instance.PlayClickSound();
                             OpenMenu();
+                            ResetCursor();
                         }
                         else if (_buttons.Count > 0 && !_isHovered) {
                             CloseMenu();
+                            ResetCursor();
                         }
                         
                         // if effect after dialogue do here
@@ -55,6 +58,8 @@ public class Interactable : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
                         break;
                     case InteractableType.Movement:
                         if (_isHovered) {
+                            ResetCursor();
+                            SoundManager.Instance.PlayClickSound();
                             if (interactableEffect != InteractableEffect.None) {
                                 ImageMovement.Instance.ApplyEffect(interactableEffect);
                                 Debug.Log("do stuff pls");
@@ -77,6 +82,7 @@ public class Interactable : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
                     case InteractableType.Other:
                         if (_isHovered && interactableEffect != InteractableEffect.None) {
                             ImageMovement.Instance.ApplyEffect(interactableEffect);
+                            ResetCursor();
                         }
                         break;
                 }
@@ -89,6 +95,7 @@ public class Interactable : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
     public void OnPointerEnter(PointerEventData eventData) {
         if (_isInteractable) {
             if(highlight) highlight.SetActive(true);
+            SetCursor();
             _isHovered = true;
         }
     }
@@ -96,11 +103,14 @@ public class Interactable : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
     public void OnPointerExit(PointerEventData eventData) {
         if (_isHovered) {
             if(highlight) highlight.SetActive(false);
+            ResetCursor();
             _isHovered = false;
         }
     }
 
     private void OpenMenu() {
+        
+        var mousePosition = Input.mousePosition;
         
         for (int i = 0; i < interactibleData.dialogOptions.Length; i++) {
 
@@ -118,7 +128,7 @@ public class Interactable : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
             textScript.text = interactibleData.dialogOptions[i].action;
 
             // set button position à la rache pas ouf à refaire
-            button.transform.Translate(transform.position);
+            button.transform.Translate(mousePosition);
             button.transform.Translate(new Vector3(0, i * 50f, 0));
             _buttons.Add(button);
         }
@@ -126,6 +136,7 @@ public class Interactable : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
 
     private void UseButton(String text, DialogOption doption) {
         Debug.Log(text);
+        SoundManager.Instance.PlayClickSound();
         CloseMenu();
         DialogManager.Instance.SetDialog(doption);
     }
@@ -135,5 +146,33 @@ public class Interactable : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
             Destroy(button);
         }
         _buttons.Clear();
+    }
+
+    private void SetCursor() {
+        switch (interactableType) {
+            case InteractableType.Dialog:
+                MouseInteraction.Instance.SetCursor(CursorType.Interact);
+                break;
+            case InteractableType.Movement:
+                switch (movementDirection) {
+                    case MovementDirection.Left:
+                        MouseInteraction.Instance.SetCursor(CursorType.Left);
+                        break;
+                    case MovementDirection.Right:
+                        MouseInteraction.Instance.SetCursor(CursorType.Right);
+                        break;
+                    case MovementDirection.Forward:
+                        MouseInteraction.Instance.SetCursor(CursorType.Forward);
+                        break;
+                }
+                break;
+            case InteractableType.Other:
+                MouseInteraction.Instance.SetCursor(CursorType.Interact);
+                break;
+        }
+    }
+
+    private void ResetCursor() {
+        MouseInteraction.Instance.SetCursor(CursorType.Normal);
     }
 }

@@ -44,6 +44,8 @@ public class ImageMovement : MonoBehaviour
     private FMVState _currentState = FMVState.Idle;
     private VideoPlayer _currentVideoPlayer;
     private GameObject _currentCanvas;
+
+    private int _footstepType = 0;
     
     public RenderTexture persistentRT;
     
@@ -86,6 +88,7 @@ public class ImageMovement : MonoBehaviour
             _currentState  = FMVState.Transitioning;
             Destroy(_currentCanvas);
             StartCoroutine(PlayClip(_currentLocation.Transitions[(int)_currentDirection]));
+            SoundManager.Instance.PlayFootsteps(_footstepType);
             _currentVideoPlayer.loopPointReached += OnTransitionVideoFinished;
         }
     }
@@ -101,6 +104,7 @@ public class ImageMovement : MonoBehaviour
                 canvasQuai.SetWave(_currentLocation.currentQuaiWave);
             }
         }
+        SoundManager.Instance.StopSound();
         _currentVideoPlayer.loopPointReached -= OnTransitionVideoFinished;
     }
 

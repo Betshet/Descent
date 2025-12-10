@@ -5,6 +5,8 @@ public class SoundManager : MonoBehaviour
     public static SoundManager Instance { get; private set; }
     
     [SerializeField] private AudioClip footstepSound;
+    [SerializeField] private AudioClip bitCrushFootstepSound;
+    [SerializeField] private AudioClip clickSound;
     
     [SerializeField] private AudioSource sfxSource;
     [SerializeField] private AudioSource dialogueSource;
@@ -44,12 +46,27 @@ public class SoundManager : MonoBehaviour
         dialogueSource.PlayOneShot(clip);
     }
 
-    public void PlayFootsteps() {
-        sfxSource.PlayOneShot(footstepSound);
+    public void PlayClickSound() {
+        sfxSource.PlayOneShot(clickSound);
+    }
+
+    public void PlayFootsteps(int i) {
+        sfxSource.pitch = 1.5f;
+        switch (i) {
+            case 0:
+                Debug.Log("PlayFootsteps: " + i);
+                sfxSource.PlayOneShot(footstepSound);
+                break;
+            case 1:
+                sfxSource.PlayOneShot(bitCrushFootstepSound);
+                break;
+        }
     }
 
     public void StopSound() {
+        Debug.Log("StopSound");
         if(sfxSource.isPlaying) sfxSource.Stop();
+        sfxSource.pitch = 1f;
     }
     
 }
