@@ -4,7 +4,8 @@ public enum InteractibleObject
 {
     None,
     Chair,
-    Character_Comfort
+    Character_Pain,
+    Character_Common
 }
 
 

@@ -1,6 +1,8 @@
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
+using Image = UnityEngine.UI.Image;
 
 public class DialogManager : MonoBehaviour
 {
@@ -19,6 +21,9 @@ public class DialogManager : MonoBehaviour
 
     [SerializeField]
     GameObject DialogBoxText_Portrait;
+
+    [SerializeField]
+    GameObject DialogBox_PortraitImage;
 
     [SerializeField]
     GameObject DialogBoxText_NoPortrait;
@@ -99,20 +104,17 @@ public class DialogManager : MonoBehaviour
 
     public void SetDialog(DialogOption dialog)
     {
-        if(dialog.portrait == Portrait.None)
+        if(dialog.dialogChoices.Length != 0)
         {
-            if(dialog.dialogChoices.Length != 0)
-            {
-                SetupChoice(dialog);
-            }
-            else
-            {
-                SetDialogBoxText(dialog.dialogText, false);
-            }
+            SetupChoice(dialog);
+        }
+        else if(dialog.portrait)
+        {
+            SetDialogBoxText(dialog.dialogText, true);
         }
         else
         {
-            SetDialogBoxText(dialog.dialogText, true);
+            SetDialogBoxText(dialog.dialogText, false);
         }
     }
 
@@ -176,8 +178,14 @@ public class DialogManager : MonoBehaviour
         }
         else
         {
-            DisplayDialogBox(currentCharOption.dialogPortraits[currentDialogLine] == Portrait.None ? DialogType.NoPortrait : DialogType.Portrait);
-            SetDialogBoxText(currentCharOption.dialogText[currentDialogLine]);
+            bool usePortait = currentCharOption.dialogPortraits[currentDialogLine] ? true : false;
+            SetDialogBoxText(currentCharOption.dialogText[currentDialogLine], usePortait);
+
+
+            if (usePortait)
+            {
+                DialogBox_PortraitImage.GetComponent<Image>().sprite = currentCharOption.dialogPortraits[currentDialogLine];
+            }
 
             currentDialogLine++;
         }

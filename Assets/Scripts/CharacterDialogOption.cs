@@ -6,5 +6,5 @@ public class CharacterDialogOption : ScriptableObject
 {
     public string dialogOptionText;
     public string[] dialogText;
-    public Portrait[] dialogPortraits;
+    public Sprite[] dialogPortraits;
 }
