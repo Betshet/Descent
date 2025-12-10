@@ -187,6 +187,8 @@ public class DialogManager : MonoBehaviour
                 DialogBox_PortraitImage.GetComponent<Image>().sprite = currentCharOption.dialogPortraits[currentDialogLine];
             }
 
+            //SoundManager.Instance.PlayDialogue();
+
             currentDialogLine++;
         }
     }

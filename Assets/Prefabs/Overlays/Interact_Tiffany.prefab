@@ -783,7 +783,7 @@ GameObject:
   - component: {fileID: 2969234830659382782}
   - component: {fileID: 7607219066684921216}
   m_Layer: 5
-  m_Name: Tiffany
+  m_Name: Interact_Tiffany
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
