@@ -34,12 +34,14 @@ public class ImageMovement : MonoBehaviour
     
     [SerializeField] private Image imageDisplay;
     [SerializeField] private VideoPlayer videoDisplay0;
-    [SerializeField] private MapLocation startLocation;
+    [SerializeField] private Scene startScene;
     [SerializeField] private RawImage rawImage;
+    [SerializeField] private VideoClip startClip;
     
     [SerializeField] private MapLocation locationAfterHole;
     [SerializeField] private VideoClip handVideo;
-    
+
+    private Scene _currentScene;
     private MapLocation _currentLocation;
     private Direction _currentDirection = Direction.N;
     private FMVState _currentState = FMVState.Idle;
@@ -51,7 +53,9 @@ public class ImageMovement : MonoBehaviour
     public RenderTexture persistentRT;
     
     void Start() {
-        _currentLocation = startLocation;
+        _currentScene = startScene;
+        _currentDirection = _currentScene.StartDirection;
+        _currentLocation = _currentScene.StartLocation;
         _currentVideoPlayer  = videoDisplay0;
         videoDisplay0.isLooping = false;
         videoDisplay0.playbackSpeed = 2f;
@@ -67,6 +71,8 @@ public class ImageMovement : MonoBehaviour
         videoDisplay0.skipOnDrop = false;
         
         _currentCanvas = Instantiate(_currentLocation.ViewCanvases[(int)_currentDirection]);
+
+        if (startClip) StartCoroutine(PlayClip(startClip));
     }
     
     void Update()
@@ -221,6 +227,19 @@ public class ImageMovement : MonoBehaviour
                         _currentLocation.currentQuaiWave++;
                     }
                 }
+                break;
+            case InteractableEffect.NextScene:
+                // do transition logic
+                
+                _currentScene = _currentScene.NextScene;
+                _currentDirection = _currentScene.StartDirection;
+                _currentLocation = _currentScene.StartLocation;
+                Destroy(_currentCanvas);
+                
+                if (_currentLocation.ViewCanvases[(int)_currentDirection] != null) {
+                    _currentCanvas = Instantiate(_currentLocation.ViewCanvases[(int)_currentDirection]);
+                }
+                
                 break;
         }
     }

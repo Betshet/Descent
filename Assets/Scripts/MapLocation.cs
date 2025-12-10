@@ -36,6 +36,8 @@ public class MapLocation : ScriptableObject
     [SerializeField] private VideoClip[] transitions = new VideoClip[8];
     [SerializeField] private GameObject[] viewCanvases = new GameObject[8];
     [SerializeField] private bool[] lookableDirections = new bool[8]{true, false, true, false, true, false, true, false};
+    [SerializeField] private bool movesToNextScene;
+    [SerializeField] private Direction nextSceneDirecion;
     
     public LocationEffect LocationEffect => locationEffect;
     public MapLocation[] Links => links;
@@ -44,6 +46,8 @@ public class MapLocation : ScriptableObject
     public VideoClip[] Transitions => transitions;
     public GameObject[] ViewCanvases => viewCanvases;
     public bool[] LookableDirections => lookableDirections;
+    public bool MovesToNextScene => movesToNextScene;
+    public Direction NextSceneDirecion => nextSceneDirecion;
     
     public int currentQuaiWave;
 

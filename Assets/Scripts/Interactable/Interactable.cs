@@ -15,7 +15,8 @@ public enum InteractableType {
 public enum InteractableEffect {
     None,
     HandInHole,
-    QuaiPeople
+    QuaiPeople,
+    NextScene
 }
 
 public class Interactable : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler {

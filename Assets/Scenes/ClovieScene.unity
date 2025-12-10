@@ -1274,8 +1274,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ImageMovement
   imageDisplay: {fileID: 0}
   videoDisplay0: {fileID: 526948211}
-  startLocation: {fileID: 11400000, guid: 929a106dba54833489aed64bb70bb73a, type: 2}
+  startScene: {fileID: 11400000, guid: 7a3292eae6f9ce547b804ecd9efdf7e9, type: 2}
   rawImage: {fileID: 1278514111}
+  startClip: {fileID: 0}
   locationAfterHole: {fileID: 11400000, guid: fa10cde4d2f7f1d43aeea51b0bd2d937, type: 2}
   handVideo: {fileID: 32900000, guid: b86c71a25fe2c40488ec998ce650efef, type: 3}
   persistentRT: {fileID: 0}

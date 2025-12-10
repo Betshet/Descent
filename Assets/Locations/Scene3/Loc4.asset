@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ed0dc47874d48c849a8279f2311f8ae4, type: 3}
-  m_Name: Loc2 2
+  m_Name: Loc4
   m_EditorClassIdentifier: Assembly-CSharp::MapLocation
   locationEffect: 0
   links:
@@ -18,47 +18,45 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 11400000, guid: cbf4e9a65a8a7e44f9f966762c6d940b, type: 2}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   clockwiseTurns:
-  - {fileID: 32900000, guid: e78199005c48c0f458a6733b2af46e3b, type: 3}
+  - {fileID: 32900000, guid: db52b8855e5d628488032f033f4fc570, type: 3}
   - {fileID: 0}
-  - {fileID: 32900000, guid: f516a42a947bbab44b047cd390b59a2a, type: 3}
   - {fileID: 0}
-  - {fileID: 32900000, guid: c5469d88108cde944acf6e45818ea95b, type: 3}
   - {fileID: 0}
-  - {fileID: 32900000, guid: 65d1678c77c44af499b69f6a6ee86380, type: 3}
+  - {fileID: 32900000, guid: 98e047ca71a25c3439ad91751ac5df71, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
   - {fileID: 0}
   anticlockwiseTurns:
-  - {fileID: 32900000, guid: 3fcc8d2f0052429408c24f867badd0d7, type: 3}
+  - {fileID: 32900000, guid: 49398b53771e35943a1867d3b35ac2fd, type: 3}
   - {fileID: 0}
-  - {fileID: 32900000, guid: a6c722d051566a54eb66d3e2959bd1b0, type: 3}
   - {fileID: 0}
-  - {fileID: 32900000, guid: 8f9f620bb5648af478f9359fe56f7b93, type: 3}
   - {fileID: 0}
-  - {fileID: 32900000, guid: deff02b45758c154eaa80cfa19d25e44, type: 3}
+  - {fileID: 32900000, guid: ce66c12811930ae4ba4f67701ad6e04a, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
   - {fileID: 0}
   transitions:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  - {fileID: 32900000, guid: be1507831aaaf134f9a772cbabd18c6d, type: 3}
   - {fileID: 0}
   - {fileID: 0}
-  - {fileID: 32900000, guid: ad3fa70b51db7284f8133fa4bfc9f2eb, type: 3}
   - {fileID: 0}
   viewCanvases:
   - {fileID: 9135082865862867143, guid: bfeab816af7f96540b852f98978e823a, type: 3}
   - {fileID: 0}
-  - {fileID: 9135082865862867143, guid: bfeab816af7f96540b852f98978e823a, type: 3}
   - {fileID: 0}
-  - {fileID: 9135082865862867143, guid: bfeab816af7f96540b852f98978e823a, type: 3}
   - {fileID: 0}
-  - {fileID: 9135082865862867143, guid: 43972098093c48f44a5e850af318542e, type: 3}
+  - {fileID: 9135082865862867143, guid: a94e2d0e03981cd4a89511c5312dd691, type: 3}
   - {fileID: 0}
-  lookableDirections: 0100010001000100
-  movesToNextScene: 0
-  nextSceneDirecion: 0
+  - {fileID: 0}
+  - {fileID: 0}
+  lookableDirections: 0100000001000000
   currentQuaiWave: 0
