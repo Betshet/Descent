@@ -6,8 +6,15 @@ using UnityEngine.EventSystems;
 using UnityEngine.UIElements;
 using Button = UnityEngine.UI.Button;
 
+public enum InteractableType {
+    Dialog,
+    Movement
+}
+
 public class Interactable : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler {
     
+    [SerializeField] private InteractableType interactableType;
+    [SerializeField] private MovementDirection movementDirection;
     [SerializeField] private GameObject highlight;
     [SerializeField] private IteractibleData interactibleData;
     [SerializeField] private GameObject buttonPrefab;
@@ -18,30 +25,51 @@ public class Interactable : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
     private List<GameObject> _buttons = new();
     
     void Start() {
-        highlight.SetActive(false);
+        if(highlight) highlight.SetActive(false);
     }
     
     void Update() {
         if (Input.GetMouseButtonDown(0)) {
-            if (_isHovered && _isInteractable && _buttons.Count == 0) {
-                OpenMenu();
-            }
-            else if (_buttons.Count > 0 && !_isHovered) {
-                CloseMenu();
+            switch (interactableType) {
+                case InteractableType.Dialog: 
+                    if (_isHovered && _isInteractable && _buttons.Count == 0) {
+                        OpenMenu();
+                    }
+                    else if (_buttons.Count > 0 && !_isHovered) {
+                        CloseMenu();
+                    }
+                    break;
+                case InteractableType.Movement:
+                    if (_isHovered && _isInteractable) {
+                        switch (movementDirection) {
+                            case MovementDirection.Left:
+                                ImageMovement.Instance.Turn(MovementDirection.Left);
+                                break;
+                            case MovementDirection.Right:
+                                ImageMovement.Instance.Turn(MovementDirection.Right);
+                                break;
+                            case MovementDirection.Forward:
+                                ImageMovement.Instance.TransitionLocation();
+                                break;
+                        }
+                    }
+                    break;
             }
         }
+
     }
 
     public void OnPointerEnter(PointerEventData eventData) {
         if (_isInteractable) {
-            highlight.SetActive(true);
+            Debug.Log("Enter Interactable");
+            if(highlight) highlight.SetActive(true);
             _isHovered = true;
         }
     }
 
     public void OnPointerExit(PointerEventData eventData) {
         if (_isHovered) {
-            highlight.SetActive(false);
+            if(highlight) highlight.SetActive(false);
             _isHovered = false;
         }
     }

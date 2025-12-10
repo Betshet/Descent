@@ -9,13 +9,29 @@ public enum FMVState {
     Transitioning,
 }
 
-public enum TurnDirection {
+public enum MovementDirection {
     Left,
     Right,
+    Forward,
+    Backward,
 }
 
 public class ImageMovement : MonoBehaviour
 {
+    public static ImageMovement Instance { get; private set; }
+
+    private void Awake() 
+    {
+        if (Instance != null && Instance != this) 
+        { 
+            Destroy(this); 
+        } 
+        else 
+        { 
+            Instance = this; 
+        } 
+    }
+    
     [SerializeField] private Image imageDisplay;
     [SerializeField] private VideoPlayer videoDisplay0;
     [SerializeField] private MapLocation startLocation;
@@ -52,28 +68,24 @@ public class ImageMovement : MonoBehaviour
     {
         if (_currentState == FMVState.Idle) {
             if (Input.GetKeyDown(KeyCode.UpArrow)) {
-                if (_currentLocation.Links[(int)_currentDirection] != null) {
-                    _currentState  = FMVState.Transitioning;
-                    Destroy(_currentCanvas);
-                    TransitionLocation();
-                }
+                //TransitionLocation();
             }
             if (Input.GetKeyDown(KeyCode.RightArrow)) {
-                _currentState  = FMVState.Transitioning;
-                Destroy(_currentCanvas);
-                Turn(TurnDirection.Right);
+                //Turn(MovementDirection.Right);
             }
             if (Input.GetKeyDown(KeyCode.LeftArrow)) {
-                _currentState = FMVState.Transitioning;
-                Destroy(_currentCanvas);
-                Turn(TurnDirection.Left);
+                //Turn(MovementDirection.Left);
             }
         }
     }
 
-    private void TransitionLocation() {
-        StartCoroutine(PlayClip(_currentLocation.Transitions[(int)_currentDirection]));
-        _currentVideoPlayer.loopPointReached += OnTransitionVideoFinished;
+    public void TransitionLocation() {
+        if (_currentLocation.Links[(int)_currentDirection] != null) {
+            _currentState  = FMVState.Transitioning;
+            Destroy(_currentCanvas);
+            StartCoroutine(PlayClip(_currentLocation.Transitions[(int)_currentDirection]));
+            _currentVideoPlayer.loopPointReached += OnTransitionVideoFinished;
+        }
     }
     
     private void OnTransitionVideoFinished(VideoPlayer source) {
@@ -86,17 +98,20 @@ public class ImageMovement : MonoBehaviour
         _currentVideoPlayer.loopPointReached -= OnTransitionVideoFinished;
     }
 
-    private void Turn(TurnDirection direction) {
+    public void Turn(MovementDirection direction) {
 
+        _currentState  = FMVState.Transitioning;
+        Destroy(_currentCanvas);
+        
         Direction newDir = FindNextDirection(direction);
         
         switch (direction) {
-            case TurnDirection.Right:
+            case MovementDirection.Right:
                 StartCoroutine(PlayClip(_currentLocation.ClockwiseTurns[(int)_currentDirection]));
                 _currentVideoPlayer.loopPointReached += OnTurnVideoFinished;
                 _currentDirection = newDir;
                 break;
-            case TurnDirection.Left:
+            case MovementDirection.Left:
                 StartCoroutine(PlayClip(_currentLocation.AnticlockwiseTurns[(int)_currentDirection]));
                 _currentVideoPlayer.loopPointReached += OnTurnVideoFinished;
                 _currentDirection = newDir;
@@ -144,10 +159,10 @@ public class ImageMovement : MonoBehaviour
         return closestDirection;
     }
 
-    private Direction FindNextDirection(TurnDirection turn) {
+    private Direction FindNextDirection(MovementDirection movement) {
         Direction newDir = _currentDirection;
-        switch (turn) {
-            case TurnDirection.Right:
+        switch (movement) {
+            case MovementDirection.Right:
                 newDir++;
                 if (newDir > Direction.NW) {
                     newDir = Direction.N;
@@ -159,7 +174,7 @@ public class ImageMovement : MonoBehaviour
                     }
                 }
                 break;
-            case TurnDirection.Left:
+            case MovementDirection.Left:
                 newDir--;
                 if (newDir < Direction.N) {
                     newDir = Direction.NW;

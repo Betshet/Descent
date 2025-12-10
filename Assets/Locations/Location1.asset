@@ -48,4 +48,13 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  viewCanvases:
+  - {fileID: 9135082865862867143, guid: a94e2d0e03981cd4a89511c5312dd691, type: 3}
+  - {fileID: 0}
+  - {fileID: 9135082865862867143, guid: a94e2d0e03981cd4a89511c5312dd691, type: 3}
+  - {fileID: 0}
+  - {fileID: 9135082865862867143, guid: a94e2d0e03981cd4a89511c5312dd691, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   lookableDirections: 0100010001000000
