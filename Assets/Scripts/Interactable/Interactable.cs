@@ -62,7 +62,6 @@ public class Interactable : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
                             SoundManager.Instance.PlayClickSound();
                             if (interactableEffect != InteractableEffect.None) {
                                 ImageMovement.Instance.ApplyEffect(interactableEffect);
-                                Debug.Log("do stuff pls");
                             }
                             switch (movementDirection) {
                                 case MovementDirection.Left:
@@ -82,6 +81,7 @@ public class Interactable : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
                     case InteractableType.Other:
                         if (_isHovered && interactableEffect != InteractableEffect.None) {
                             ImageMovement.Instance.ApplyEffect(interactableEffect);
+                            SoundManager.Instance.PlayClickSound();
                             ResetCursor();
                         }
                         break;

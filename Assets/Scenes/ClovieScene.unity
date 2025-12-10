@@ -511,6 +511,7 @@ MonoBehaviour:
   DialogBox_Portrait: {fileID: 1692884155}
   DialogBox_NoPortrait: {fileID: 777047802}
   DialogBoxText_Portrait: {fileID: 1762045358}
+  DialogBox_PortraitImage: {fileID: 0}
   DialogBoxText_NoPortrait: {fileID: 1793332030}
   DialogBox_Choice: {fileID: 1690605324}
   ChoiceButtons:
@@ -1276,6 +1277,7 @@ MonoBehaviour:
   startLocation: {fileID: 11400000, guid: 929a106dba54833489aed64bb70bb73a, type: 2}
   rawImage: {fileID: 1278514111}
   locationAfterHole: {fileID: 11400000, guid: fa10cde4d2f7f1d43aeea51b0bd2d937, type: 2}
+  handVideo: {fileID: 32900000, guid: b86c71a25fe2c40488ec998ce650efef, type: 3}
   persistentRT: {fileID: 0}
 --- !u!1 &710444441
 GameObject:
