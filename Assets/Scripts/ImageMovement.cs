@@ -94,6 +94,10 @@ public class ImageMovement : MonoBehaviour
         _currentState  = FMVState.Idle;
         if (_currentLocation.ViewCanvases[(int)_currentDirection]) {
             _currentCanvas = Instantiate(_currentLocation.ViewCanvases[(int)_currentDirection]);
+            var canvasQuai = _currentCanvas.GetComponent<CanvasQuai>();
+            if (canvasQuai != null) {
+                canvasQuai.SetWave(_currentLocation.currentQuaiWave);
+            }
         }
         _currentVideoPlayer.loopPointReached -= OnTransitionVideoFinished;
     }
@@ -124,6 +128,10 @@ public class ImageMovement : MonoBehaviour
         _currentState  = FMVState.Idle;
         if (_currentLocation.ViewCanvases[(int)_currentDirection]) {
             _currentCanvas = Instantiate(_currentLocation.ViewCanvases[(int)_currentDirection]);
+            var canvasQuai = _currentCanvas.GetComponent<CanvasQuai>();
+            if (canvasQuai != null) {
+                canvasQuai.SetWave(_currentLocation.currentQuaiWave);
+            }
         }
         videoDisplay0.loopPointReached -= OnTurnVideoFinished;
     }
@@ -131,7 +139,7 @@ public class ImageMovement : MonoBehaviour
     private IEnumerator PlayClip(VideoClip clip) {
         _currentVideoPlayer.Pause();
         _currentVideoPlayer.clip = clip;
-        _currentVideoPlayer.Prepare();   // PRELOAD NEW DECODED FRAME
+        _currentVideoPlayer.Prepare();
         yield return new WaitUntil(() => _currentVideoPlayer.isPrepared);
         _currentVideoPlayer.Play();
     }
@@ -188,6 +196,23 @@ public class ImageMovement : MonoBehaviour
                 break;
         }
         return newDir;
+    }
+
+    public void ApplyEffect(InteractableEffect effect) {
+        switch (effect) {
+            case InteractableEffect.HandInHole:
+                
+                break;
+            case InteractableEffect.QuaiPeople:
+                if (_currentLocation.LocationEffect == LocationEffect.Quai) {
+                    var canvasQuai = _currentCanvas.GetComponent<CanvasQuai>();
+                    if (canvasQuai != null) {
+                        Debug.Log("Quai effect");
+                        _currentLocation.currentQuaiWave++;
+                    }
+                }
+                break;
+        }
     }
     
 }

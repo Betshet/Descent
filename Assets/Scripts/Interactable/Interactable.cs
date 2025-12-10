@@ -8,13 +8,21 @@ using Button = UnityEngine.UI.Button;
 
 public enum InteractableType {
     Dialog,
-    Movement
+    Movement,
+    Other
+}
+
+public enum InteractableEffect {
+    None,
+    HandInHole,
+    QuaiPeople
 }
 
 public class Interactable : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler {
     
     [SerializeField] private InteractableType interactableType;
     [SerializeField] private MovementDirection movementDirection;
+    [SerializeField] private InteractableEffect interactableEffect;
     [SerializeField] private GameObject highlight;
     [SerializeField] private IteractibleData interactibleData;
     [SerializeField] private GameObject buttonPrefab;
@@ -30,38 +38,56 @@ public class Interactable : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
     
     void Update() {
         if (Input.GetMouseButtonDown(0)) {
-            switch (interactableType) {
-                case InteractableType.Dialog: 
-                    if (_isHovered && _isInteractable && _buttons.Count == 0) {
-                        OpenMenu();
-                    }
-                    else if (_buttons.Count > 0 && !_isHovered) {
-                        CloseMenu();
-                    }
-                    break;
-                case InteractableType.Movement:
-                    if (_isHovered && _isInteractable) {
-                        switch (movementDirection) {
-                            case MovementDirection.Left:
-                                ImageMovement.Instance.Turn(MovementDirection.Left);
-                                break;
-                            case MovementDirection.Right:
-                                ImageMovement.Instance.Turn(MovementDirection.Right);
-                                break;
-                            case MovementDirection.Forward:
-                                ImageMovement.Instance.TransitionLocation();
-                                break;
+            
+            if (_isInteractable) {
+                
+                switch (interactableType) {
+                    case InteractableType.Dialog: 
+                        if (_isHovered && _buttons.Count == 0) {
+                            OpenMenu();
                         }
-                    }
-                    break;
+                        else if (_buttons.Count > 0 && !_isHovered) {
+                            CloseMenu();
+                        }
+                        
+                        // if effect after dialogue do here
+                        
+                        break;
+                    case InteractableType.Movement:
+                        if (_isHovered) {
+                            if (interactableEffect != InteractableEffect.None) {
+                                ImageMovement.Instance.ApplyEffect(interactableEffect);
+                                Debug.Log("do stuff pls");
+                            }
+                            switch (movementDirection) {
+                                case MovementDirection.Left:
+                                    ImageMovement.Instance.Turn(MovementDirection.Left);
+                                    break;
+                                case MovementDirection.Right:
+                                    ImageMovement.Instance.Turn(MovementDirection.Right);
+                                    break;
+                                case MovementDirection.Forward:
+                                    ImageMovement.Instance.TransitionLocation();
+                                    break;
+                            }
+
+                            
+                        }
+                        break;
+                    case InteractableType.Other:
+                        if (_isHovered && interactableEffect != InteractableEffect.None) {
+                            ImageMovement.Instance.ApplyEffect(interactableEffect);
+                        }
+                        break;
+                }
             }
+            
         }
 
     }
 
     public void OnPointerEnter(PointerEventData eventData) {
         if (_isInteractable) {
-            Debug.Log("Enter Interactable");
             if(highlight) highlight.SetActive(true);
             _isHovered = true;
         }
