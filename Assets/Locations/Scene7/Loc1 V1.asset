@@ -1,0 +1,62 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed0dc47874d48c849a8279f2311f8ae4, type: 3}
+  m_Name: Loc1 V1
+  m_EditorClassIdentifier: Assembly-CSharp::MapLocation
+  locationEffect: 0
+  links:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 11400000, guid: ee99c3b0f976af943a4e178b1acf8af4, type: 2}
+  - {fileID: 0}
+  - {fileID: 11400000, guid: fa10cde4d2f7f1d43aeea51b0bd2d937, type: 2}
+  - {fileID: 0}
+  clockwiseTurns:
+  - {fileID: 32900000, guid: 4555f7edb922dae458702512394c8ce1, type: 3}
+  - {fileID: 0}
+  - {fileID: 32900000, guid: d82c1f18e0ce1624fad7ac386e224490, type: 3}
+  - {fileID: 0}
+  - {fileID: 32900000, guid: c9fc497c86675d342bc9103f0ff4f2f6, type: 3}
+  - {fileID: 0}
+  - {fileID: 32900000, guid: 98e11000fa167a74caf5e09d1e5de68e, type: 3}
+  - {fileID: 0}
+  anticlockwiseTurns:
+  - {fileID: 32900000, guid: e4343f69011485444b9420bd9283f8d1, type: 3}
+  - {fileID: 0}
+  - {fileID: 32900000, guid: e2813181838239a43a5ca1f940eb18a7, type: 3}
+  - {fileID: 0}
+  - {fileID: 32900000, guid: 276d52dd51f973e45847689da9c8ed0e, type: 3}
+  - {fileID: 0}
+  - {fileID: 32900000, guid: 81d95df77b0c5f14296f67e16bb172f4, type: 3}
+  - {fileID: 0}
+  transitions:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 32900000, guid: 6b88a8a0cffd94c448aaf1a108a29920, type: 3}
+  - {fileID: 0}
+  - {fileID: 32900000, guid: a0f0098f6b124a24081954b828e6f3d2, type: 3}
+  - {fileID: 0}
+  viewCanvases:
+  - {fileID: 9135082865862867143, guid: bfeab816af7f96540b852f98978e823a, type: 3}
+  - {fileID: 0}
+  - {fileID: 9135082865862867143, guid: bfeab816af7f96540b852f98978e823a, type: 3}
+  - {fileID: 0}
+  - {fileID: 9135082865862867143, guid: a94e2d0e03981cd4a89511c5312dd691, type: 3}
+  - {fileID: 0}
+  - {fileID: 9135082865862867143, guid: bd576e48e618e1a4e97e6df20414519b, type: 3}
+  - {fileID: 0}
+  lookableDirections: 0100010001000100
+  currentQuaiWave: 0

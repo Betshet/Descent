@@ -3,7 +3,7 @@ from moviepy import VideoFileClip
 
 scene = "Scene7"
 
-input_folder = "videos_processed/"+ scene +"/normal"
+input_folder = "videos_processed/"+ scene +"/reversed"
 output_folder = "videos_processed/"+ scene +"/final"
 
 TARGET_FPS = 24

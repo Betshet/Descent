@@ -37,11 +37,15 @@ public class ImageMovement : MonoBehaviour
     [SerializeField] private MapLocation startLocation;
     [SerializeField] private RawImage rawImage;
     
+    [SerializeField] private MapLocation locationAfterHole;
+    
     private MapLocation _currentLocation;
     private Direction _currentDirection = Direction.N;
     private FMVState _currentState = FMVState.Idle;
     private VideoPlayer _currentVideoPlayer;
     private GameObject _currentCanvas;
+
+    private int _footstepType = 0;
     
     public RenderTexture persistentRT;
     
@@ -84,6 +88,7 @@ public class ImageMovement : MonoBehaviour
             _currentState  = FMVState.Transitioning;
             Destroy(_currentCanvas);
             StartCoroutine(PlayClip(_currentLocation.Transitions[(int)_currentDirection]));
+            SoundManager.Instance.PlayFootsteps(_footstepType);
             _currentVideoPlayer.loopPointReached += OnTransitionVideoFinished;
         }
     }
@@ -99,6 +104,7 @@ public class ImageMovement : MonoBehaviour
                 canvasQuai.SetWave(_currentLocation.currentQuaiWave);
             }
         }
+        SoundManager.Instance.StopSound();
         _currentVideoPlayer.loopPointReached -= OnTransitionVideoFinished;
     }
 
@@ -201,7 +207,10 @@ public class ImageMovement : MonoBehaviour
     public void ApplyEffect(InteractableEffect effect) {
         switch (effect) {
             case InteractableEffect.HandInHole:
-                
+                _currentState  = FMVState.Transitioning;
+                Destroy(_currentCanvas);
+                StartCoroutine(PlayClip(_currentLocation.Transitions[(int)_currentDirection]));
+                _currentVideoPlayer.loopPointReached += OnHandInHoleFinish;
                 break;
             case InteractableEffect.QuaiPeople:
                 if (_currentLocation.LocationEffect == LocationEffect.Quai) {
@@ -213,6 +222,15 @@ public class ImageMovement : MonoBehaviour
                 }
                 break;
         }
+    }
+
+    private void OnHandInHoleFinish(VideoPlayer source) {
+        _currentLocation = locationAfterHole;
+        _currentState  = FMVState.Idle;
+        if (_currentLocation.ViewCanvases[(int)_currentDirection] != null) {
+            _currentCanvas = Instantiate(_currentLocation.ViewCanvases[(int)_currentDirection]);
+        }
+        _currentVideoPlayer.loopPointReached -= OnHandInHoleFinish;
     }
     
 }
