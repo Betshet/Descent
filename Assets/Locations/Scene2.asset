@@ -16,10 +16,10 @@ MonoBehaviour:
   startDirection: 0
   nextScene: {fileID: 11400000, guid: 7a3292eae6f9ce547b804ecd9efdf7e9, type: 2}
   music: {fileID: 0}
-  hueA: {r: 1, g: 1, b: 1, a: 1}
-  hueB: {r: 0, g: 1, b: 0, a: 1}
+  hueA: {r: 1, g: 1, b: 1, a: 0}
+  hueB: {r: 1, g: 1, b: 1, a: 0}
   hue: 0
   offset: 0.001
-  lightLineSpeed: 0.4
-  Saturation: 0.8
-  Contrast: 1
+  lightLineSpeed: 2
+  Saturation: 0.5
+  Contrast: 0.5
