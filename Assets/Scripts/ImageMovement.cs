@@ -83,7 +83,6 @@ public class ImageMovement : MonoBehaviour
         
         imageMaterial.SetTexture("_texture_A", persistentRT);
         imageMaterial.SetTexture("_texture_B", persistentRT);
-        SetShaderValues();
     }
     
     void Update()
@@ -281,6 +280,7 @@ public class ImageMovement : MonoBehaviour
 
     private void SetShaderValues()
     {
+        rawImage.material = imageMaterial;
         imageMaterial.SetColor("_ColorA", _currentScene.hueA);
         imageMaterial.SetColor("_ColorB", _currentScene.hueB);
         imageMaterial.SetFloat("_Offset", _currentScene.offset);
