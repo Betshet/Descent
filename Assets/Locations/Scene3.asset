@@ -15,4 +15,11 @@ MonoBehaviour:
   startLocation: {fileID: 11400000, guid: b4c46c53a3e13de47a11286e15945840, type: 2}
   startDirection: 4
   nextScene: {fileID: 11400000, guid: e2b24841a4ffd01488b307a6a3d11e1a, type: 2}
-  music: {fileID: 8300000, guid: 024a11646e282fe44a4b0035c4610562, type: 3}
+  music: {fileID: 8300000, guid: 3d6256b75d404ac4b8afe8e3ef30c32f, type: 3}
+  hueA: {r: 1, g: 0.81154275, b: 0.4660377, a: 1}
+  hueB: {r: 0, g: 0.6754716, b: 0, a: 1}
+  hue: 0
+  offset: 0.00236
+  lightLineSpeed: 0.4
+  Saturation: 1
+  Contrast: 1
