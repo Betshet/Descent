@@ -55,6 +55,8 @@ public class ImageMovement : MonoBehaviour
     public RenderTexture persistentRT;
     
     void Start() {
+
+        Screen.SetResolution(1280, 960, true);
         _currentScene = startScene;
         _currentDirection = _currentScene.StartDirection;
         _currentLocation = _currentScene.StartLocation;

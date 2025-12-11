@@ -129,7 +129,7 @@ public class Interactable : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
             textScript.text = interactibleData.dialogOptions[i].action;
 
             // set button position à la rache pas ouf à refaire
-            button.transform.Translate(mousePosition);
+            button.transform.Translate(new Vector3(mousePosition.x, mousePosition.y, 0));
             button.transform.Translate(new Vector3(0, i * 50f, 0));
             _buttons.Add(button);
         }

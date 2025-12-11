@@ -7,7 +7,7 @@ public class ButtonManagerScript : MonoBehaviour
 
     void Start()
     {
-
+        Screen.SetResolution(1280, 960, true);
     }
 
     // Update is called once per frame
