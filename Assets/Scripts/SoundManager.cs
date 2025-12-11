@@ -43,6 +43,7 @@ public class SoundManager : MonoBehaviour
     }
 
     public void PlayDialogue(AudioClip clip) {
+        dialogueSource.Stop();
         dialogueSource.PlayOneShot(clip);
     }
 

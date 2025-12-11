@@ -187,8 +187,13 @@ public class DialogManager : MonoBehaviour
                 DialogBox_PortraitImage.GetComponent<Image>().sprite = currentCharOption.dialogPortraits[currentDialogLine];
             }
 
-            //SoundManager.Instance.PlayDialogue();
+            bool useSound = currentCharOption.dialogSounds[currentDialogLine] ? true : false;
 
+            if (useSound)
+            {
+                SoundManager.Instance.PlayDialogue(currentCharOption.dialogSounds[currentDialogLine]);
+            }
+            
             currentDialogLine++;
         }
     }
