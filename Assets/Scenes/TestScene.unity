@@ -1376,7 +1376,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ImageMovement
   imageDisplay: {fileID: 0}
   videoDisplay0: {fileID: 526948211}
-  startScene: {fileID: 11400000, guid: 5c14bf960eab81345bbe75d223df62b4, type: 2}
+  startScene: {fileID: 11400000, guid: ba13c872a2531fd4189c85d9c2b3aa57, type: 2}
   rawImage: {fileID: 1278514111}
   startClip: {fileID: 0}
   transitionImage: {fileID: 1643817556}
@@ -2090,7 +2090,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1344c3c82d62a2a41a3576d8abb8e3ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.RawImage
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 2100000, guid: fdd697403a0904248976f9a3c8b048a4, type: 2}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
