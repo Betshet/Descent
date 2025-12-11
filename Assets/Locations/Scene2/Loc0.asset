@@ -50,7 +50,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   viewCanvases:
-  - {fileID: 9135082865862867143, guid: ae9e30b043c850e40a0b3e67a4a8b89a, type: 3}
+  - {fileID: 9135082865862867143, guid: a0e151e5246c494499b36f70a78bf248, type: 3}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
@@ -59,4 +59,6 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   lookableDirections: 0100000000000000
+  movesToNextScene: 0
+  nextSceneDirecion: 0
   currentQuaiWave: 0

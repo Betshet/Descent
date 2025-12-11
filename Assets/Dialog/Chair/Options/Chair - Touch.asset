@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Chair - Touch
   m_EditorClassIdentifier: Assembly-CSharp::DialogOption
   action: Toucher
-  dialogText: "Le plastique lisse est collants par endroits. Il vaut mieux \xE9viter
+  dialogText: "Le plastique lisse est collant par endroits. Il vaut mieux \xE9viter
     de s'y asseoir."
   dialogChoices: []
-  portrait: 0
+  portrait: {fileID: 0}
