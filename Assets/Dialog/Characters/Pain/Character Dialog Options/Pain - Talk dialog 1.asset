@@ -32,3 +32,11 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 12929aa1efaf6014ebb20748d5a51ee3, type: 3}
   - {fileID: 0}
   - {fileID: 21300000, guid: 12929aa1efaf6014ebb20748d5a51ee3, type: 3}
+  dialogSounds:
+  - {fileID: 8300000, guid: b51190d6ed0e4a0488d90dee73442d1d, type: 3}
+  - {fileID: 0}
+  - {fileID: 8300000, guid: 95bf0bdb6f0929c4abf7c2b6ed71e649, type: 3}
+  - {fileID: 0}
+  - {fileID: 8300000, guid: ce7ca73b0f5b52f489b56fbff18ffbe9, type: 3}
+  - {fileID: 0}
+  - {fileID: 8300000, guid: 693806a2c77e9b549a5fb08a769747af, type: 3}
