@@ -38,6 +38,7 @@ public class ImageMovement : MonoBehaviour
     [SerializeField] private RawImage rawImage;
     [SerializeField] private VideoClip startClip;
     [SerializeField] private Image transitionImage;
+    [SerializeField] private Material imageMaterial;
     
     [SerializeField] private MapLocation locationAfterHole;
     [SerializeField] private VideoClip handVideo;
@@ -79,6 +80,10 @@ public class ImageMovement : MonoBehaviour
         
         transitionImage.color = Color.black;
         transitionImage.CrossFadeAlpha(0, 0.5f, false);
+        
+        imageMaterial.SetTexture("_texture_A", persistentRT);
+        imageMaterial.SetTexture("_texture_B", persistentRT);
+        SetShaderValues();
     }
     
     void Update()
@@ -263,6 +268,7 @@ public class ImageMovement : MonoBehaviour
         _currentDirection = _currentScene.StartDirection;
         _currentLocation = _currentScene.StartLocation;
         Destroy(_currentCanvas);
+        SetShaderValues();
                 
         if (_currentLocation.ViewCanvases[(int)_currentDirection] != null) {
             _currentCanvas = Instantiate(_currentLocation.ViewCanvases[(int)_currentDirection]);
@@ -271,5 +277,16 @@ public class ImageMovement : MonoBehaviour
         if(_currentScene.Music) SoundManager.Instance.PlayMusic(_currentScene.Music);
         transitionImage.CrossFadeAlpha(0, transitionTime, false);
         Debug.Log("End transition");
+    }
+
+    private void SetShaderValues()
+    {
+        imageMaterial.SetColor("_ColorA", _currentScene.hueA);
+        imageMaterial.SetColor("_ColorB", _currentScene.hueB);
+        imageMaterial.SetFloat("_Offset", _currentScene.offset);
+        imageMaterial.SetFloat("_Light_line_speed", _currentScene.lightLineSpeed);
+        imageMaterial.SetFloat("_Saturation", _currentScene.Saturation);
+        imageMaterial.SetFloat("_Hue", _currentScene.hue);
+        imageMaterial.SetFloat("_Contrast", _currentScene.Contrast);
     }
 }
