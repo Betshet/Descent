@@ -15,3 +15,4 @@ MonoBehaviour:
   startLocation: {fileID: 11400000, guid: 82a7f809902c0d4408cc925e68184df9, type: 2}
   startDirection: 0
   nextScene: {fileID: 0}
+  music: {fileID: 8300000, guid: 16eca935acc7f55419ec53fda983068d, type: 3}

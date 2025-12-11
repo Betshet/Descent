@@ -29,7 +29,7 @@ public class SoundManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        musicSource.loop = true;
     }
 
     // Update is called once per frame
@@ -67,6 +67,11 @@ public class SoundManager : MonoBehaviour
         Debug.Log("StopSound");
         if(sfxSource.isPlaying) sfxSource.Stop();
         sfxSource.pitch = 1f;
+    }
+    
+    public void PlayMusic(AudioClip clip) {
+        musicSource.clip = clip;
+        musicSource.Play();
     }
     
 }

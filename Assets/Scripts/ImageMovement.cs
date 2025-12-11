@@ -37,6 +37,7 @@ public class ImageMovement : MonoBehaviour
     [SerializeField] private Scene startScene;
     [SerializeField] private RawImage rawImage;
     [SerializeField] private VideoClip startClip;
+    [SerializeField] private Image transitionImage;
     
     [SerializeField] private MapLocation locationAfterHole;
     [SerializeField] private VideoClip handVideo;
@@ -56,6 +57,8 @@ public class ImageMovement : MonoBehaviour
         _currentScene = startScene;
         _currentDirection = _currentScene.StartDirection;
         _currentLocation = _currentScene.StartLocation;
+        if(_currentScene.Music) SoundManager.Instance.PlayMusic(_currentScene.Music);
+        
         _currentVideoPlayer  = videoDisplay0;
         videoDisplay0.isLooping = false;
         videoDisplay0.playbackSpeed = 2f;
@@ -73,6 +76,9 @@ public class ImageMovement : MonoBehaviour
         _currentCanvas = Instantiate(_currentLocation.ViewCanvases[(int)_currentDirection]);
 
         if (startClip) StartCoroutine(PlayClip(startClip));
+        
+        transitionImage.color = Color.black;
+        transitionImage.CrossFadeAlpha(0, 0.5f, false);
     }
     
     void Update()
@@ -230,15 +236,12 @@ public class ImageMovement : MonoBehaviour
                 break;
             case InteractableEffect.NextScene:
                 // do transition logic
+
+                float transitionTime = 1f;
+                Debug.Log("Start transition");
                 
-                _currentScene = _currentScene.NextScene;
-                _currentDirection = _currentScene.StartDirection;
-                _currentLocation = _currentScene.StartLocation;
-                Destroy(_currentCanvas);
-                
-                if (_currentLocation.ViewCanvases[(int)_currentDirection] != null) {
-                    _currentCanvas = Instantiate(_currentLocation.ViewCanvases[(int)_currentDirection]);
-                }
+                transitionImage.CrossFadeAlpha(1, transitionTime, false);
+                StartCoroutine(LoadNextScene(transitionTime));
                 
                 break;
         }
@@ -252,5 +255,21 @@ public class ImageMovement : MonoBehaviour
         }
         _currentVideoPlayer.loopPointReached -= OnHandInHoleFinish;
     }
-    
+
+    private IEnumerator LoadNextScene(float transitionTime)
+    {
+        yield return new WaitForSeconds(transitionTime + 0.5f);
+        _currentScene = _currentScene.NextScene;
+        _currentDirection = _currentScene.StartDirection;
+        _currentLocation = _currentScene.StartLocation;
+        Destroy(_currentCanvas);
+                
+        if (_currentLocation.ViewCanvases[(int)_currentDirection] != null) {
+            _currentCanvas = Instantiate(_currentLocation.ViewCanvases[(int)_currentDirection]);
+        }
+                
+        if(_currentScene.Music) SoundManager.Instance.PlayMusic(_currentScene.Music);
+        transitionImage.CrossFadeAlpha(0, transitionTime, false);
+        Debug.Log("End transition");
+    }
 }
