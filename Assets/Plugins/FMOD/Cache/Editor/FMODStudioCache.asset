@@ -1,6 +1,33 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-3869949888689369373
+--- !u!114 &-7788809899658494458
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Test
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/Test
+  Guid:
+    Data1: -220604150
+    Data2: 1110438718
+    Data3: 2136910002
+    Data4: 1368177652
+  Banks:
+  - {fileID: 2876217089550025977}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 2324
+--- !u!114 &-4140488641003607537
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -33,21 +60,21 @@ MonoBehaviour:
   m_Name: FMODStudioCache
   m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EventCache
   EditorBanks:
-  - {fileID: -3869949888689369373}
-  - {fileID: 2466929490472736303}
+  - {fileID: -4140488641003607537}
+  - {fileID: 2876217089550025977}
   EditorEvents:
-  - {fileID: 7076267304950474111}
+  - {fileID: -7788809899658494458}
   EditorParameters: []
   MasterBanks:
-  - {fileID: 2466929490472736303}
+  - {fileID: 2876217089550025977}
   StringsBanks:
-  - {fileID: -3869949888689369373}
+  - {fileID: -4140488641003607537}
   cacheVersion: 131857
   cacheTime: 639009728744497548
   SerializableEventsDict:
   - key: event:/Test
     index: 0
---- !u!114 &2466929490472736303
+--- !u!114 &2876217089550025977
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -67,30 +94,3 @@ MonoBehaviour:
   - Name: Desktop
     Value: 73600
   Exists: 1
---- !u!114 &7076267304950474111
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Test
-  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
-  Path: event:/Test
-  Guid:
-    Data1: -220604150
-    Data2: 1110438718
-    Data3: 2136910002
-    Data4: 1368177652
-  Banks:
-  - {fileID: 2466929490472736303}
-  IsStream: 0
-  Is3D: 1
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 2324

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed0dc47874d48c849a8279f2311f8ae4, type: 3}
   m_Name: Loc1
   m_EditorClassIdentifier: Assembly-CSharp::MapLocation
-  locationEffect: 0
+  locationEffect: 1
   links:
   - {fileID: 0}
   - {fileID: 0}
@@ -50,13 +50,13 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   viewCanvases:
-  - {fileID: 9135082865862867143, guid: bfeab816af7f96540b852f98978e823a, type: 3}
+  - {fileID: 9135082865862867143, guid: a0e151e5246c494499b36f70a78bf248, type: 3}
   - {fileID: 0}
-  - {fileID: 9135082865862867143, guid: bfeab816af7f96540b852f98978e823a, type: 3}
+  - {fileID: 9135082865862867143, guid: 5ab27d1d2afa93843a689a32e4c6dbd5, type: 3}
   - {fileID: 0}
   - {fileID: 9135082865862867143, guid: 43972098093c48f44a5e850af318542e, type: 3}
   - {fileID: 0}
-  - {fileID: 9135082865862867143, guid: bfeab816af7f96540b852f98978e823a, type: 3}
+  - {fileID: 9135082865862867143, guid: 00183072ffbc8f04a9a45e5bbb5d4273, type: 3}
   - {fileID: 0}
   lookableDirections: 0100010001000100
   movesToNextScene: 0
